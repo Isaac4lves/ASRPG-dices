@@ -96,7 +96,7 @@ label {
   }
   
 /* responsividade */
-@media (max-width: 480px) {
+@media (max-width: 399px) {
     #title {
         font-size: 1.2rem;
     }
@@ -113,5 +113,14 @@ label {
     .display {
         flex-direction: column;
         gap: 8px;
+    }
+    #cervo, #joaninha, #coruja, #nada{
+        display: flex;
+        justify-content: last baseline;
+        justify-items:right ;
+        animation: shake 0.5s;
+        width: 95px;
+        height: 95px;
+        border: solid 2px black;
     }
 }
