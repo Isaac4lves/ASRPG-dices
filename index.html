@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Dados Assimilação</title>
+</head>
+
+<body>
+    <header>
+        <h1 id="title">ASSIMILAÇÃO RPG</h1>
+    </header>
+    <br>
+    <script src="script.js"></script>
+
+    <div class="clear">
+        <button id="limpar" onclick="clean()">Limpar</button>
+    </div>
+
+    <div class="dicesBtn">
+
+        <button onclick=dice(6)>
+            <img src="/source/d6.png" id="img-d6">
+        </button>
+
+        <button onclick=dice(10)>
+            <img src="/source/d10.png" id="img-d10">
+        </button>
+
+        <button onclick=dice(12)>
+            <img src="/source/d12.png" id="img-d12">
+        </button>
+
+    </div>
+    <br>
+    <div class="text">
+        <h3>Histórico:&emsp;</h3>
+        <p id="cache"> </p>
+    </div>
+
+    <hr>
+
+    <div class="display"></div>
+</body>
+
+</html>
