@@ -1,87 +1,97 @@
 let cache = [];
+let i = 0;
+
 const dice6 = {
-    d1:"<img id='nada' src='source/Nada.png'>",
-    d1_txt:"[Nada]",
-    d2:"<img id='nada' src='source/Nada.png'>",
-    d2_txt:"[Nada]",
-    d3:"<img id='coruja' src='source/Coruja.png'>",
-    d3_txt:"[Pressão]",
-    d4:"<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
-    d4_txt:"[Pressão e Adaptação]",
-    d5:"<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
-    d5_txt:"[Pressão e Adaptação]",
-    d6:"<img id='joaninha' src='source/Joaninha.png'>",
-    d6_txt:"[Sucesso]"
-}
+    d1: "<img id='nada' src='source/Nada.png'>",
+    d2: "<img id='nada' src='source/Nada.png'>",
+    d3: "<img id='coruja' src='source/Coruja.png'>",
+    d4: "<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
+    d5: "<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
+    d6: "<img id='joaninha' src='source/Joaninha.png'>",
+};
 
 const dice10 = {
-    d1:"<img id='nada' src='source/Nada.png'>",
-    d1_txt:"[Nada]",
-    d2:"<img id='nada' src='source/Nada.png'>",
-    d2_txt:"[Nada]",
-    d3:"<img id='coruja' src='source/Coruja.png'>",
-    d3_txt:"[Pressão]",
-    d4:"<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
-    d4_txt:"[Pressão e Adaptação]",
-    d5:"<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
-    d5_txt:"[Pressão e Adaptação]",
-    d6:"<img id='joaninha' src='source/Joaninha.png'>",
-    d6_txt:"[Sucesso]",
-    d7:"<img id='joaninha' src='source/Joaninha.png'> <img id='joaninha' src='source/Joaninha.png'>",
-    d7_txt:"[2x Sucessos]",
-    d8:"<img id='joaninha' src='source/Joaninha.png'> <img id='cervo' src='source/Cervo.png'>",
-    d8_txt:"[Sucesso e Adptação]",
-    d9:"<img id='joaninha' src='source/Joaninha.png'> <img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
-    d9_txt:"[Sucesso, Pressão e Adaptação]",
-    d10:"<img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'>",
-    d10_txt:"[3x Pressões]"
-}
+    d1: "<img id='nada' src='source/Nada.png'>",
+    d2: "<img id='nada' src='source/Nada.png'>",
+    d3: "<img id='coruja' src='source/Coruja.png'>",
+    d4: "<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
+    d5: "<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
+    d6: "<img id='joaninha' src='source/Joaninha.png'>",
+    d7: "<img id='joaninha' src='source/Joaninha.png'> <img id='joaninha' src='source/Joaninha.png'>",
+    d8: "<img id='joaninha' src='source/Joaninha.png'> <img id='cervo' src='source/Cervo.png'>",
+    d9: "<img id='joaninha' src='source/Joaninha.png'> <img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
+    d10: "<img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'>",
+};
 
 const dice12 = {
-    d1:"<img id='nada' src='source/Nada.png'>",
-    d1_txt:"[Nada]",
-    d2:"<img id='nada' src='source/Nada.png'>",
-    d2_txt:"[Nada]",
-    d3:"<img id='coruja' src='source/Coruja.png'>",
-    d3_txt:"[Pressão]",
-    d4:"<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
-    d4_txt:"[Pressão e Adaptação]",
-    d5:"<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
-    d5_txt:"[Pressão e Adaptação]",
-    d6:"<img id='joaninha' src='source/Joaninha.png'>",
-    d6_txt:"[Sucesso]",
-    d7:"<img id='joaninha' src='source/Joaninha.png'> <img id='joaninha' src='source/Joaninha.png'>",
-    d7_txt:"[2x Sucessos]",
-    d8:"<img id='joaninha' src='source/Joaninha.png'> <img id='cervo' src='source/Cervo.png'>",
-    d8_txt:"[Sucesso e Adptação]",
-    d9:"<img id='joaninha' src='source/Joaninha.png'> <img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
-    d9_txt:"[Sucesso, Pressão e Adaptação]",
-    d10:"<img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'>",
-    d10_txt:"[3x Pressões]",
-    d11:"<img id='coruja' src='source/Coruja.png'>  <img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'> <img id='cervo' src='source/Cervo.png'>",
-    d11_txt:"[2x Pressões 2x Adaptações]",
-    d12:"<img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'>",
-    d12_txt:"[2x Pressões]"
-}
+    d1: "<img id='nada' src='source/Nada.png'>",
+    d2: "<img id='nada' src='source/Nada.png'>",
+    d3: "<img id='coruja' src='source/Coruja.png'>",
+    d4: "<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
+    d5: "<img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
+    d6: "<img id='joaninha' src='source/Joaninha.png'>",
+    d7: "<img id='joaninha' src='source/Joaninha.png'> <img id='joaninha' src='source/Joaninha.png'>",
+    d8: "<img id='joaninha' src='source/Joaninha.png'> <img id='cervo' src='source/Cervo.png'>",
+    d9: "<img id='joaninha' src='source/Joaninha.png'> <img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'>",
+    d10: "<img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'>",
+    d11: "<img id='coruja' src='source/Coruja.png'>  <img id='coruja' src='source/Coruja.png'> <img id='cervo' src='source/Cervo.png'> <img id='cervo' src='source/Cervo.png'>",
+    d12: "<img id='coruja' src='source/Coruja.png'> <img id='coruja' src='source/Coruja.png'>",
+};
 
-function clean(e){
+function clean() {
     cache = [];
-    document.querySelector("#cache").innerHTML = cache;
+    document.querySelector("#cache").innerHTML = "";
     document.querySelector(".display").innerHTML = " ";
 }
 
-function showDice(src){
+function showDice(src) {
     document.querySelector("#cache").innerHTML = cache.join(' ');
-    document.querySelector(".display").innerHTML =" ";
     document.querySelector(".display").innerHTML = src;
-  
 }
 
-function dice(side){
-    var face = "d"+Math.floor(Math.random() * (side - 1) + 1);
-    var txt = face+"_txt";
-    if(side == 6){ cache.push(dice6[txt]); showDice(dice6[face]); }
-    if(side == 10){ cache.push(dice10[txt]); showDice(dice10[face]); }
-    if(side == 12){ cache.push(dice12[txt]); showDice(dice12[face]); }
+function dice(method = "default", side, x) {
+    var face = "d" + Math.floor(Math.random() * side + 1);
 
+    if (side == 6 && method == "default") { cache.push(`<b>d6:</b> ( <div id='dice-img'> ${dice6[face]} </div> )`); showDice(dice6[face]); }
+    if (side == 10 && method == "default") { cache.push(`<b>d10:</b> ( <div id='dice-img'> ${dice10[face]} </div> )`); showDice(dice10[face]); }
+    if (side == 12 && method == "default") { cache.push(`<b>d12:</b> ( <div id='dice-img'> ${dice12[face]} </div> )`); showDice(dice12[face]); }
+
+    if (method == "multiples") {
+        x = parseInt(document.querySelector("#quantidade").value);
+        const Dice = parseInt(document.querySelector("#dado").value);
+
+        const results = [];
+        const images = [];
+
+        for (let i = 0; i < x; i++) {
+            var face = "d" + Math.floor(Math.random() * Dice + 1);
+
+            if (Dice == 6) { results.push(`<div id='dice-img'> ${dice6[face]} </div>`); images.push(dice6[face]); }
+            if (Dice == 10) { results.push(`<div id='dice-img'> ${dice10[face]} </div>`); images.push(dice10[face]); }
+            if (Dice == 12) { results.push(`<div id='dice-img'> ${dice12[face]} </div>`); images.push(dice12[face]); }
+        }
+
+        cache.push(`<b>${x}d${Dice}:</b> ( ${results.join(" <p>:)</p> ")} )`);
+        showDice(images.join(' '));
+    }
 }
+
+function close() {
+    i += 1;
+    document.querySelector(".pad-display").style.display = (i % 2 === 1) ? "flex" : "none";
+}
+
+function CustomRoll() {
+    dice("multiples");
+}
+
+// Event listeners
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector(".config").addEventListener("click", close);
+    document.querySelector("#close-display").addEventListener("click", close);
+    document.querySelector("#custom-roll").addEventListener("click", CustomRoll);
+    document.querySelector("#limpar").addEventListener("click", clean);
+    document.querySelector("#d6").addEventListener("click", () => dice("default", 6));
+    document.querySelector("#d10").addEventListener("click", () => dice("default", 10));
+    document.querySelector("#d12").addEventListener("click", () => dice("default", 12));
+});
