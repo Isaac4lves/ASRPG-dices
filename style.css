@@ -80,6 +80,10 @@ header {
     border: none;
 }
 
+.config {
+    margin-bottom: 10px;
+}
+
 .config:hover {
     transform: scale(1.1);
 }
